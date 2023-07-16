@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Leetwars | Multiplayer Contest-style rooms for LeetCode</title>
+        <link rel="manifest" href="./assets/site.webmanifest" />
+    </head>
+    <body>
+        <script>
+            try {
+                const leetwarsDarkMode =
+                    localStorage.getItem("leetwarsDarkMode");
+                if (leetwarsDarkMode === "true" || !leetwarsDarkMode) {
+                    document.body.classList.add("dark");
+                } else {
+                    document.body.classList.remove("dark");
+                }
+            } catch (error) {
+                document.body.classList.add("dark");
+                console.error(
+                    "Unable to read from local storage while third-party cookies are disabled"
+                );
+            }
+
+            window.addEventListener("message", (event) => {
+                if (
+                    event.data?.extension !== "leetwars" ||
+                    !("isDarkMode" in event.data)
+                ) {
+                    return;
+                }
+                try {
+                    if (event.data.isDarkMode) {
+                        document.body.classList.add("dark");
+                        localStorage.setItem("leetwarsDarkMode", "true");
+                    } else {
+                        document.body.classList.remove("dark");
+                        localStorage.setItem("leetwarsDarkMode", "false");
+                    }
+                } catch (error) {
+                    console.error("Unable to write to local storage");
+                }
+            });
+        </script>
+        <div id="leetwars-root"></div>
+        <script type="module" src="./main.tsx"></script>
+    </body>
+</html>

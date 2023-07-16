@@ -1,0 +1,26 @@
+{
+  "name": "leetwars",
+  "version": "0.1.0",
+  "description": "Contest-style rooms for LeetCode",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "extension",
+      "server"
+    ],
+    "nohoist": [
+      "**/extension",
+      "**/extension/**",
+      "**/server",
+      "**/server/**"
+    ]
+  },
+  "scripts": {
+    "dev": "set -a && . ./.env && set +a && caddy start && turbo run dev",
+    "build": "set -a && . ./.env.production && set +a && turbo run build",
+    "build:dev": "set -a && . ./.env && set +a && turbo run build:dev",
+    "nuke": "rm -rf node_modules && rm -rf yarn.lock && rm -rf extension/node_modules && rm -rf server/node_modules"
+  }
+}
