@@ -3,18 +3,23 @@
 - Establish competitive multiplayer environments
 - Engage in real-time conversations with other participants
 - Tailor the room configurations to focus on particular subjects
-- Authenticate using GitHub, Google, Discord, or Twitch
+- Authenticate using GitHub, Google, or Discord
 
 ## DEMO
 
-### Create and invite other players to a room
+### Authenticate using GitHub, Google, Discord, or Twitch
 
-<video controls>
-  <source src="./static/Screen Recording 2024-05-19 at 5.52.53 PM.mov" type="video/mp4">
-</video>
+![Signup](./static/signup.png)
 
-### Submit solutions
+### Tailor rooms based on your preferences
 
-<video controls>
-  <source src="./static/submit.mov" type="video/mp4">
-</video>
+![Signup](./static/customize_room.png)
+
+### Engage in real-time conversations with other participants
+
+![Invite others](./static/solve_with_others.png)
+
+### Submit your solution and see how you rank
+
+![Submission](./static/submission.png)
+![Leaderboard](./static/scoreboard.png)
