@@ -1,4 +1,4 @@
-const APP_URL = import.meta.env.VITE_APP_URL;
+const APP_URL = "https://app.leetwars.localhost";
 
 const dragHandlebarSVG = `<svg class="handlebar-svg" id="drag-handlebar-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 14" width="2" height="14">
 <circle r="1" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 1 1)"></circle>
@@ -14,7 +14,7 @@ async function main() {
     let prevSubmissionId = "";
     const reactRoot = document.createElement("iframe");
 
-    reactRoot.src = APP_URL;
+    reactRoot.src = "https://app.leetwars.localhost";
     reactRoot.id = "leetwars-iframe";
     reactRoot.allow = "clipboard-read; clipboard-write";
 
@@ -226,16 +226,13 @@ async function main() {
             APP_URL
         );
 
-        const acceptedSolutionSelectors = [
-            "#qd-content > div.h-full.flex-col > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div.flex.flex-col > div > div.flex.items-center > div > svg",
-            "#qd-content > div.h-full.flex-col > div > div > div > div.flex.h-full.w-full.overflow-y-auto > div > div.flex.flex-col > div > div.flex.items-center > div > span",
-        ];
         const startTime = Date.now();
-        const selector = acceptedSolutionSelectors[0];
         const timeout = 20_000;
         submissionButtonTimer = setInterval(() => {
-            const element = document.querySelector(selector);
-            if (element) {
+            const element = document.querySelector(
+                "[data-e2e-locator='submission-result']"
+            );
+            if (element?.innerHTML === "Accepted") {
                 clearInterval(submissionButtonTimer);
                 if (!reactRoot.contentWindow || !currentQuestionTitleSlug) {
                     return;
@@ -293,4 +290,4 @@ function getCurrentQuestionTitleSlug(): string | undefined {
 
 main();
 
-export {};
+export { };

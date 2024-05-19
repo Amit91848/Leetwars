@@ -5,7 +5,7 @@
     "main": "index.js",
     "version": "0.1.0",
     "scripts": {
-        "dev": "export NODE_ENV=development && nodemon src/index.ts | pino-pretty --singleLine --levelFirst --translateTime",
+        "dev": " set -a && . ../.env && set +a && export NODE_ENV=development && nodemon src/index.ts | pino-pretty --singleLine --levelFirst --translateTime",
         "build": "export NODE_ENV=production && rm -rf ./dist && tsc -p tsconfig.build.json",
         "start": "export NODE_ENV=production && node dist/src/index.js",
         "prisma-init": "set -a && . ../.env && set +a && prisma init --datasource-provider postgresql",
